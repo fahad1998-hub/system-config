@@ -12,6 +12,7 @@ app.get('/ip', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+
 // API endpoint to return user's IP
 app.get('/get-ip', async (req, res) => {
     try {
