@@ -43,15 +43,15 @@
 </head>
 <body>
   <h1>Your IP Address</h1>
-  <div id="ip">Loading...</div>
+  <div id="ip">Loading....</div>
 
-  <footer>Built with ❤️ by Fahad</footer>
+  <footer style="font-size: 1rem; opacity: 0.8;">Built with ❤️ by Fahad</footer>
 
   <script>
-    fetch('/get-ip')
-      .then(res => res.text())
-      .then(ip => {
-        document.getElementById('ip').textContent = ip.replace('Your IP address is: ', '');
+    fetch("/get-client-ip")
+      .then((res) => res.text())
+      .then((ip) => {
+        document.getElementById("ip").textContent = ip
       })
       .catch(err => {
         document.getElementById('ip').textContent = 'Unable to fetch IP';
