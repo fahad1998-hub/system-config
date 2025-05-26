@@ -7,7 +7,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    /* Reset and base */
     * {
       box-sizing: border-box;
     }
@@ -26,6 +25,19 @@
       text-align: center;
       overflow: hidden;
       position: relative;
+      padding-bottom: 60px; /* space for footer */
+    }
+
+    #appContent {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    #appContent.hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      pointer-events: none;
+      user-select: none;
+      height: 0;
+      overflow: hidden;
     }
 
     h1 {
@@ -69,19 +81,48 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 15px;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 1rem;
       opacity: 0.7;
       font-weight: 500;
       letter-spacing: 0.5px;
       user-select: none;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 6px 16px;
+      border-radius: 30px;
+      max-width: 90vw;
+      white-space: nowrap;
+      z-index: 10;
     }
 
     footer span {
       color: #ff6b6b;
       font-size: 1.2rem;
       vertical-align: middle;
+    }
+
+    /* Hide/Show button */
+    #toggleBtn {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(255, 107, 107, 0.5);
+      transition: background-color 0.3s ease;
+      z-index: 20;
+      user-select: none;
+    }
+    #toggleBtn:hover {
+      background-color: #ff4c4c;
     }
 
     /* Responsive adjustments */
@@ -95,17 +136,34 @@
         padding: 1rem 2rem;
         border-radius: 15px;
       }
+
+      footer {
+        font-size: 0.9rem;
+        padding: 5px 12px;
+      }
+
+      #toggleBtn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Client IP Address</h1>
-  <div id="ip" class="loading">Loading....</div>
+  <div id="appContent">
+    <h1>Client IP Address</h1>
+    <div id="ip" class="loading">Loading....</div>
+  </div>
+
+  <button id="toggleBtn" aria-label="Hide or Show App">Hide App</button>
 
   <footer>Built with <span>❤️</span> by Fahad</footer>
 
   <script>
     const ipDiv = document.getElementById('ip');
+    const appContent = document.getElementById('appContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
     fetch("/get-client-ip")
       .then((res) => res.text())
       .then((ip) => {
@@ -117,6 +175,11 @@
         ipDiv.classList.remove('loading');
         console.error(err);
       });
+
+    toggleBtn.addEventListener('click', () => {
+      const isHidden = appContent.classList.toggle('hidden');
+      toggleBtn.textContent = isHidden ? 'Show IP' : 'Hide IP';
+    });
   </script>
 </body>
 </html>
