@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "public")));
 
-// Serve the main HTML 
+// Serve the main HTML page
 app.get("/system-ip", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
