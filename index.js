@@ -12,6 +12,7 @@ app.get("/system-ip", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+// Serve the client IP page
 app.get("/client-ip", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
