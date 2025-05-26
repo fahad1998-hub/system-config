@@ -29,7 +29,7 @@
         align-items: center;
         text-align: center;
         position: relative;
-        padding-bottom: 80px; /* space for footer & toggle button */
+        padding-bottom: 80px;
       }
 
       #appContent {
@@ -113,7 +113,6 @@
         user-select: none;
       }
 
-      /* Hide/Show button */
       #toggleBtn {
         position: fixed;
         bottom: 80px;
@@ -132,16 +131,17 @@
         font-weight: 600;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
+
       #toggleBtn:hover {
         background-color: #ff4c4c;
         box-shadow: 0 12px 26px rgba(255, 76, 76, 0.7);
       }
+
       #toggleBtn:focus {
         outline: none;
         box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.8);
       }
 
-      /* Responsive adjustments */
       @media (max-width: 600px) {
         h1 {
           font-size: 2.8rem;
@@ -158,6 +158,7 @@
           font-size: 0.95rem;
           padding: 7px 14px;
         }
+
         body {
           padding-bottom: 120px;
         }
@@ -192,6 +193,33 @@
           right: 12px;
         }
       }
+      #linkedinLink {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #0077b5, #005582);
+        color: #ffffff;
+        padding: 10px 16px;
+        border-radius: 9999px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 100;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      #linkedinLink:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      }
+
+      #linkedinLink svg {
+        flex-shrink: 0;
+      }
     </style>
   </head>
   <body>
@@ -224,12 +252,31 @@
     <footer role="contentinfo" aria-label="Page footer">
       Built with <span aria-hidden="true">❤️</span> by Fahad
     </footer>
+    <a
+      href="https://www.linkedin.com/in/backendbyfahad/"
+      target="_blank"
+      id="linkedinLink"
+      aria-label="Visit Fahad's LinkedIn profile"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.84-2.05 3.8-2.05 4.06 0 4.8 2.7 4.8 6.2V24h-4v-7.8c0-1.9-.03-4.35-2.65-4.35-2.65 0-3.05 2.07-3.05 4.2V24h-4V8z"
+        />
+      </svg>
+      <span>Visit Fahad's LinkedIn</span>
+    </a>
 
     <script>
       const ipDiv = document.getElementById("ip");
       const toggleBtn = document.getElementById("toggleBtn");
 
-      let realIp = null; // store real IP here
+      let realIp = null;
       let isHidden = false;
 
       fetch("/get-client-ip")
