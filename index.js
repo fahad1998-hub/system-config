@@ -16,6 +16,7 @@ app.get("/client-ip", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+// Get the system IP that is running the server
 // API endpoint to return user's IP
 app.get("/get-ip", async (req, res) => {
   try {
