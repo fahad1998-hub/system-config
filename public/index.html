@@ -2,59 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Client IP.</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Poppins', sans-serif;
       color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 3.5rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     #ip {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      font-size: 2rem;
-      font-weight: bold;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem 3rem;
+      border-radius: 20px;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #f0f0f0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      user-select: text;
+      cursor: default;
+      max-width: 90vw;
+      word-break: break-word;
+    }
+
+    #ip.loading {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: scale(1);
+      }
+      50% {
+        background-color: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
+      }
     }
 
     footer {
       position: absolute;
-      bottom: 10px;
-      font-size: 0.9rem;
-      opacity: 0.8;
+      bottom: 15px;
+      font-size: 1rem;
+      opacity: 0.7;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    footer span {
+      color: #ff6b6b;
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      #ip {
+        font-size: 1.8rem;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Client IP Address</h1>
-  <div id="ip">Loading....</div>
+  <div id="ip" class="loading">Loading....</div>
 
-  <footer style="font-size: 1rem; opacity: 0.8;">Built with ❤️ by Fahad</footer>
+  <footer>Built with <span>❤️</span> by Fahad</footer>
 
   <script>
+    const ipDiv = document.getElementById('ip');
     fetch("/get-client-ip")
       .then((res) => res.text())
       .then((ip) => {
-        document.getElementById("ip").textContent = ip
+        ipDiv.textContent = ip;
+        ipDiv.classList.remove('loading');
       })
       .catch(err => {
-        document.getElementById('ip').textContent = 'Unable to fetch IP';
+        ipDiv.textContent = 'Unable to fetch IP';
+        ipDiv.classList.remove('loading');
         console.error(err);
       });
   </script>
