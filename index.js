@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 const axios = require("axios");
 const PORT = process.env.PORT || 3000;
-// Get the system IP
+// Get the system IP that is running the server
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "public")));
 
