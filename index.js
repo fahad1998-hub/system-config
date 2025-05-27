@@ -36,6 +36,7 @@ app.get("/get-client-ip", (req, res) => {
         clientIp = "127.0.0.1";
     }
     clientIp = clientIp.replace(/^::ffff:/, ''); 
+    console.log("clientIp: ", clientIp);
     res.send(`${clientIp}`);
   } catch (error) {
     console.error("Error fetching IP:", error);
