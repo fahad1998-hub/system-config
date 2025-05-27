@@ -8,80 +8,67 @@
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
       * {
-        box-sizing: border-box;
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
 
       body {
         font-family: "Poppins", sans-serif;
-        background: #f7f9fc;
-        color: #1f1f1f;
+        background: #f8f9fa;
+        color: #212529;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         min-height: 100vh;
-        padding: 2rem;
+        padding: 2rem 1rem 4rem;
+        text-align: center;
       }
 
       h1 {
         font-size: 2.5rem;
-        margin-bottom: 1.2rem;
         font-weight: 600;
-        color: #333;
+        margin-bottom: 1rem;
       }
 
       #ip {
         font-size: 2rem;
+        font-weight: 500;
         padding: 1rem 2rem;
+        border-radius: 12px;
         background: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        min-width: 280px;
-        text-align: center;
-        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dee2e6;
+        margin-bottom: 2rem;
+        max-width: 90vw;
+        word-break: break-word;
       }
 
       #ip.loading {
-        color: #999;
+        color: #6c757d;
+        font-style: italic;
       }
 
       #toggleBtn {
-        padding: 0.75rem 1.5rem;
+        background-color: #007bff;
+        color: white;
         border: none;
-        border-radius: 6px;
-        background-color: #333;
-        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
         font-size: 1rem;
         cursor: pointer;
-        margin-bottom: 1rem;
+        transition: background 0.2s ease;
+        margin-bottom: 1.5rem;
       }
 
       #toggleBtn:hover {
-        background-color: #111;
-      }
-
-      #visitProfile {
-        font-size: 0.95rem;
-        margin-top: 0.25rem;
-      }
-
-      #visitProfile a {
-        color: #0077b5;
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      #visitProfile a:hover {
-        text-decoration: underline;
+        background-color: #0056b3;
       }
 
       footer {
-        margin-top: auto;
         font-size: 0.9rem;
-        color: #777;
-        padding-top: 2rem;
+        color: #6c757d;
       }
 
       #linkedinLink {
@@ -90,41 +77,57 @@
         right: 16px;
         display: flex;
         align-items: center;
-        gap: 6px;
-        text-decoration: none;
-        font-size: 0.9rem;
+        gap: 8px;
+        background: #ffffff;
         color: #0077b5;
+        padding: 8px 14px;
+        border-radius: 9999px;
+        font-size: 0.9rem;
         font-weight: 500;
-        padding: 6px 12px;
-        border-radius: 6px;
+        text-decoration: none;
         border: 1px solid #0077b5;
-        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        transition: all 0.2s ease;
+        max-width: 90vw;
       }
 
       #linkedinLink:hover {
-        background-color: #f0f0f0;
+        background-color: #f0f8ff;
+        transform: translateY(-2px);
       }
 
       #linkedinLink svg {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
+        fill: #0077b5;
       }
 
-      @media (max-width: 500px) {
+      @media (max-width: 420px) {
         h1 {
           font-size: 1.8rem;
         }
 
         #ip {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
         }
 
         #toggleBtn {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
+          padding: 0.6rem 1.2rem;
         }
 
         #linkedinLink {
-          font-size: 0.85rem;
+          top: 10px;
+          right: 10px;
+          font-size: 0.8rem;
+          padding: 6px 10px;
+          gap: 6px;
+        }
+
+        #linkedinLink svg {
+          width: 16px;
+          height: 16px;
         }
       }
     </style>
@@ -134,7 +137,7 @@
       href="https://www.linkedin.com/in/backendbyfahad/"
       target="_blank"
       id="linkedinLink"
-      aria-label="Visit Fahad's LinkedIn"
+      aria-label="Visit Fahad's LinkedIn profile"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -146,24 +149,14 @@
           d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.84-2.05 3.8-2.05 4.06 0 4.8 2.7 4.8 6.2V24h-4v-7.8c0-1.9-.03-4.35-2.65-4.35-2.65 0-3.05 2.07-3.05 4.2V24h-4V8z"
         />
       </svg>
-      LinkedIn
+      <span>LinkedIn</span>
     </a>
 
     <h1>Client IP Address</h1>
     <div id="ip" class="loading">Loading…</div>
-
     <button id="toggleBtn">Hide IP</button>
 
-    <div id="visitProfile">
-      <a
-        href="https://www.linkedin.com/in/backendbyfahad/"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Visit Profile</a
-      >
-    </div>
-
-    <footer>Built by Fahad</footer>
+    <footer>Built with ❤️ by Fahad</footer>
 
     <script>
       const ipDiv = document.getElementById("ip");
@@ -179,16 +172,22 @@
           ipDiv.textContent = ip;
           ipDiv.classList.remove("loading");
         })
-        .catch(() => {
+        .catch((err) => {
           realIp = "Unable to fetch IP";
           ipDiv.textContent = realIp;
           ipDiv.classList.remove("loading");
+          console.error(err);
         });
 
       toggleBtn.addEventListener("click", () => {
         isHidden = !isHidden;
-        ipDiv.textContent = isHidden ? "******" : realIp || "Loading…";
-        toggleBtn.textContent = isHidden ? "Show IP" : "Hide IP";
+        if (isHidden) {
+          ipDiv.textContent = "******";
+          toggleBtn.textContent = "Show IP";
+        } else {
+          ipDiv.textContent = realIp || "Loading…";
+          toggleBtn.textContent = "Hide IP";
+        }
       });
     </script>
   </body>
