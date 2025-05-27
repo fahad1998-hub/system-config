@@ -66,6 +66,25 @@
         background-color: #0056b3;
       }
 
+      #portainerLink {
+        display: inline-block;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        background-color: #00bfff;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      #portainerLink:hover {
+        background-color: #009acd;
+      }
+
       footer {
         font-size: 0.9rem;
         color: #6c757d;
@@ -155,6 +174,15 @@
     <h1>Client IP Address</h1>
     <div id="ip" class="loading">Loading…</div>
     <button id="toggleBtn">Hide IP</button>
+
+    <a
+      href="http://65.0.127.31:9000/#!/3/docker/containers"
+      target="_blank"
+      id="portainerLink"
+      aria-label="View Docker containers on Portainer"
+    >
+      🐳 View Docker Containers
+    </a>
 
     <footer>Built with ❤️ by Fahad</footer>
 
