@@ -2,7 +2,12 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const axios = require("axios");
+const morgan = require("morgan");
 const PORT = process.env.PORT || 3000;
+
+// Configure Morgan logging
+app.use(morgan('dev')); // Logs in development format: :method :url :status :response-time ms
+
 // Get the system IP that is running the server
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "public")));
@@ -36,7 +41,6 @@ app.get("/get-client-ip", (req, res) => {
         clientIp = "127.0.0.1";
     }
     clientIp = clientIp.replace(/^::ffff:/, ''); 
-    console.log("clientIp: ", clientIp);
     res.send(`${clientIp}`);
   } catch (error) {
     console.error("Error fetching IP:", error);
